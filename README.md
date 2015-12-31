@@ -1,2 +1,5 @@
 # Hello-world
-A new one.
+Just for my learning C.
+
+40 simple exercise.
+
