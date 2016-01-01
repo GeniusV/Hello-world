@@ -1,7 +1,5 @@
 # Hello-world
-Just for my learning C.
+A collection of exercises in C.
 
-40 simple exercise.
 
-Just like homework.
 
