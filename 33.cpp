@@ -7,28 +7,35 @@
 //
 #include<stdio.h>
 
-void delBlankSpace (char str[]);
 int main ()
 {
-    char str[100];
-    gets(str);
-    delBlankSpace(str);
-    puts(str);
-    return 0;
-}
-
-void delBlankSpace (char str[])
-{
-    int i, ct;
-    for (i = 0; str[i] != '\0'; i ++)
+    int ct = 0, num;
+    float sum = 0;
+    FILE *fp1, *fp2;
+    if ((fp1 = fopen ("/Users/GeniusV/Desktop/data.txt", "r")) == NULL)
     {
-        if (str[i] == ' ')
+        printf ("ERROR!! \n");
+        return -1;
+    }
+    if ((fp2 = fopen ("/Users/GeniusV/Desktop/result.txt", "w")) == NULL)
+    {
+        printf ("Error!! \n");
+        return -1;
+    }
+    while (!feof (fp1))
+    {
+        fscanf (fp1, "%d", &num);
+        if (num % 2 == 0)
         {
-            for (ct = i; str[ct] != '\0'; ct ++)
-            {
-                str[ct] = str[ct + 1];
-            }
-            str[ct + 1] = '\0';
+            fprintf (fp2, "%d ", num);
+            ct ++;
+            sum = sum + num;
         }
     }
+    fclose (fp1);
+    fclose (fp2);
+    printf ("Count = %d \n", ct);
+    printf ("sum = %.0f \n", sum);
+    printf ("Average = %.2f \n", sum / ct);
+    return 0;
 }

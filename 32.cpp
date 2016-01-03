@@ -7,25 +7,28 @@
 //
 #include<stdio.h>
 
+void delBlankSpace (char str[]);
 int main ()
 {
-    int i = 0, ct = 0;
-    char str[100], out[100];
+    char str[100];
     gets(str);
+    delBlankSpace(str);
+    puts(str);
+    return 0;
+}
+
+void delBlankSpace (char str[])
+{
+    int i, ct;
     for (i = 0; str[i] != '\0'; i ++)
     {
-        if (str[i] >= 'a' && str[i] <= 'z')
+        if (str[i] == ' ')
         {
-            out[ct] = str[i];
-            ct ++;
-        }
-        else if (str[i] >= 'A' && str[i] <= 'Z')
-        {
-            out[ct] = str[i] + 32;
-            ct ++;
+            for (ct = i; str[ct] != '\0'; ct ++)
+            {
+                str[ct] = str[ct + 1];
+            }
+            str[ct + 1] = '\0';
         }
     }
-    out[ct] = '\0';
-    puts (out);
-    return  0;
 }
